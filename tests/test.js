@@ -1,5 +1,5 @@
 const assert = require('assert')
-const request = require('superttest')
+const request = require('supertest')
 const app = require('../index')
 
 describe('Validate setting the test', () => {
