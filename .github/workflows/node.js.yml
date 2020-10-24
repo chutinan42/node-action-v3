@@ -3,27 +3,27 @@
 
 name: Node.js CI
 
-on:
+on: #ถูกเรียกใช้งานต่อเมื่อ เกิด EVENT ต่อไปนี้ push pull 
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
 jobs:
-  build:
+  build: #จะบิ้วได้ก็ต่อเมื่อทำตรงนี้ก่อน
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest #รันบน OS อะไร
 
     strategy:
-      matrix:
+      matrix: #กำหนดเวอร์ชั่นที่จะ Build
         node-version: [10.x, 12.x, 14.x]
 
-    steps:
+    steps: # jobs จะต้องทำอะไรบ้าง 
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - run: npm ci #
+    - run: npm run build --if-present v #ซอฟเเวร์nodejs
+    - run: npm test 
